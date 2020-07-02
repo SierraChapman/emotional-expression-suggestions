@@ -26,8 +26,27 @@
       </header>
 </head>
 <body>
-    <div id="random-recipe" class="container">
-        <button id="random-recipe-btn">Show me a recipe</button>
+    <div class="container">
+
+        <form>
+            <div class="form-group">
+                <label for="recipe-search-input">Have an idea of what you want to make? Search here:</label>
+                <input type="text" class="form-control" id="recipe-search-input" placeholder="search">
+            </div>
+            <div class="form-group">
+                <label for="ingredient-search-input">Have some ingredients you want to use? List them here:</label>
+                <input type="text" class="form-control" id="ingredient-search-input" placeholder="ingredient 1, ingredient 2">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+
+        <p>OR</p>
+
+        <button id="random-recipe-btn" class="btn btn-primary my-2">Show me a random recipe</button>
+
+        <div id="recipe-previews"></div>
+
+        <div id="recipe-display"></div>
     </div>
 
     <!--Import jQuery before materialize.js-->

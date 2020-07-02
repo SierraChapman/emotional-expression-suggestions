@@ -6,7 +6,9 @@ $("#random-recipe-btn").on("click", function() {
         console.log(response);
 
         var recipe = response.data.recipes[0];
-        var div = $("#random-recipe");
+        var div = $("#recipe-display");
+
+        div.empty()
 
         console.log(recipe);
 
