@@ -1,8 +1,16 @@
  .jumbotron {
     text-align: center;
-    background-color: transparent;
-    color: black;
+    background-color: black;
     border-radius: 0;
     border-bottom: 10px solid black;
   } 
   
+  body {
+    background:black;
+  }
+
+  .card{
+    background:black
+
+
+  }
