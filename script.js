@@ -15,9 +15,18 @@ $("#movie-search-button").on("click", function(event){
         $("#div").append(plot);
     });
     })
+
 $("#game-search-button").on("click", function(event){
+    var dates = ("#game-dates").val();
+    if (("#genres").val() !== ""){
+        $.ajax({
+            url: "https://api.rawg.io/api/genres?ordering=-added",
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+        });
+    }
     
-    var dates = "2019-10-10,2020-10-10"
     $.ajax({
         url: "https://api.rawg.io/api/games?dates=" + dates + "&ordering=-added",
         method: "GET"
@@ -25,10 +34,4 @@ $("#game-search-button").on("click", function(event){
 		console.log(response);
 	});
 
-    $.ajax({
-        url: "https://api.rawg.io/api/genres?ordering=-added",
-        method: "GET"
-    }).then(function(response) {
-		console.log(response);
-	});
 })
