@@ -50,6 +50,27 @@ $("#random-recipe-btn").on("click", function() {
     })
 })
 
+// SEARCH FOR RECIPES BY SOME CRITERIA, DISPLAY RESULTS AS SHORT LIST
+
+$("#search-recipe-btn").on("click", function(event) {
+    event.preventDefault();
+
+    axios.get("https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=ac075615bb0947ea8541206866406e74&query=" + $("#recipe-search-input").val() + "&includeIngredients=" + $("#ingredient-search-input").val())
+    .then((response) => {
+        console.log(response);
+
+        $("#recipe-previews").empty()
+        $("#recipe-previews").append($("<h5>").text("Results"));
+        var ul = $("<ul>");
+        $("#recipe-previews").append(ul);
+
+        for (var i = 0; i < response.data.results.length; i++) {
+            // Save recipe id that can be used to look up more details
+            ul.append($("<li class=\"recipe-preview\" data-id=\"" + response.data.results[i].id + "\">" + response.data.results[i].title + "</li>"));
+        }
+    })
+})
+
 // NOTES ON OTHER APIS
 
 // TEXT ANALYSIS API
