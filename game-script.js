@@ -8,7 +8,7 @@ $("#gameSearch").on("click", function(event){
     var genre = $("#genre").val()
     var resultsNum = $("#resultsNum").val();
     var searchBy = $("#searchBy").val();
-    var queryURL = "https://api.rawg.io/api/games?&ordering=relevance"
+    var queryURL = "https://api.rawg.io/api/games?ordering=relevance"
     if (genre !== "None" || genre !== "Genre"){
         queryURL += "&genre=" + genre;
     }
@@ -25,8 +25,14 @@ $("#gameSearch").on("click", function(event){
     else if (secondDate !== ""){
         queryURL += "&dates=1950-01-01," + secondDate;
     }
+    else {
+        queryURL += "&dates=1950-01-01,2020-07-01";
+    }
     if (resultsNum !== ""){
         queryURL += "&page_size=" + resultsNum;
+    }
+    else {
+        resultsNum = 20;
     }
     if (searchBy == "Alphabetically(A-Z)"){
         queryURL += "&ordering=name";
@@ -35,15 +41,19 @@ $("#gameSearch").on("click", function(event){
         queryURL += "&ordering=-name";
     }
     else if (searchBy == "Release Date(new-old)"){
-        queryURL += "&ordering=released";
+        queryURL += "&ordering=-released";
     }
     else if (searchBy == "Release Date(old-new)"){
-        queryURL += "&ordering=-created";
+        queryURL += "&ordering=released";
     }
     else if (searchBy == "Rating"){
-        queryURL += "&ordering=created";
+        queryURL += "&ordering=rating3";
     }
     console.log(queryURL);
+    var numGames = 0;
+    console.log(resultsNum);
+    // while (numGames < resultsNum){
+    console.log(numGames);
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -75,11 +85,25 @@ $("#gameSearch").on("click", function(event){
                     gamePlatforms.append(li);
                 }
             }
-            // var releaseDate = $("<p>");
-            // releaseDate.text(response.results.
-            div.append(gameTitle, poster, gameGenre, gamePlatforms);
+            var releaseDate = $("<p>");
+            releaseDate.text(response.results[i].released);
+            div.append(gameTitle, poster, gameGenre, gamePlatforms, releaseDate);
+            // if(response.results[i].released !== null){
+            //     releaseDate.text(response.results[i].released);
+            //     div.append(gameTitle, poster, gameGenre, gamePlatforms, releaseDate);
+            // }
+            // else {
+            //     numGames += 1;
+            // }
             $("#results").append(div);
+            // if(numGames >= resultsNum){
+            //     break;
+            // }
         }
-	});
+        if (numGames < resultsNum){
+            queryURL = results.next;
+        }
+    });
+    // }
 
 })
