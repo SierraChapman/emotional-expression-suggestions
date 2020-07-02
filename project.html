@@ -15,13 +15,14 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <header class="jumbotron">
-        <h1 class="display-4" style= color:teal>L.I.F.E.</h1>
-        <h4 style= color:teal>Living Inside For Ever</h4>
+        
+        <h1> <span style="color:blue">L.</span><span style="color:red">I.</span></span><span style="color:yellowgreen">F.</span><span style="color:orange">E.</span></h1>
+        <h4><span style= "color:blue">L</span><span style="color:white">iving</span> <span style="color:red">I</span><span style="color:white">nside </span><span style="color:white"></span><span style= "color:yellowgreen">F</span><span style="color:white">or <span style="color:orange">E</span><span style="color:white">ver</h4>
         <br>
-        <h5 style= color:teal>Sometimes you just need options</h5>
+        <h5 style= color:white>Sometimes you just need options other than cereal <i class="fas fa-grin-wink" style="color:yellow"></i></h5>
         
       </header>
 </head>
@@ -51,9 +52,9 @@
                             </div>
                             <div class="row center-align">
                                 <div class="col s12">
-                                    <a class="pulse btn wow animated" onclick="nextPage()">Movies</a>
-                                    <a class="pulse btn wow animated left-align" onclick="nextPage()">Console Games</a>
-                                    <a class="pulse btn wow animated right-align" onclick="nextPage()">Food</a>
+                                    <a class="pulse btn wow animated" id="movie-search-button" onclick="nextPage()">Movies</a>
+                                    <a class="pulse btn wow animated left-align" id="game-search-button"onclick="nextPage()">Console Games</a>
+                                    <a class="pulse btn wow animated right-align" id="food-search-button" onclick="nextPage()">Food</a>
                                   
                                 </div>
                             </div>
@@ -61,7 +62,7 @@
                             <hr>
                             <div class="row"> 
                                     <div class="col s12 m6">
-                                        <h6 style= color:black>Technologies used:</h6>
+                                        <h6 style= color:white>Technologies used:</h6>
                                         <ul class="fa-ul">
                                             <li>
                                                 <i class="fa-li fa fa-check"></i>
@@ -93,7 +94,7 @@
                               
                               
                                 <div class="col s12 m6">
-                                    <h6 style= color:black>Built by:</h6>
+                                    <h6 style= color:white>Built by:</h6>
                                     <ul class="fa-ul">
                                         <li>
                                             <i class="fa-li fa fa-github"></i>
@@ -124,7 +125,7 @@
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-            
+            <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
             <script>
                 $(document).ready(function () {
