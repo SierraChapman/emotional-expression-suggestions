@@ -1,3 +1,40 @@
+function displayRecipe(recipe) {
+    var div = $("#recipe-display");
+
+    div.empty()
+
+    div.append("<h4>" + recipe.title + "</h4>");
+    div.append("<img src=\"" + recipe.image + "\">");
+
+    // Display ingredients
+    div.append("<h5> Ingredients </h5>");
+    var ul = $("<ul>");
+    var ingredients = recipe.extendedIngredients;
+
+    div.append(ul);
+
+    for (var i = 0; i < ingredients.length; i++) {
+        ul.append("<li>" + ingredients[i].original + "</li>");
+    }
+
+    // Display instructions
+    div.append("<h5> Instructions </h5>");
+    for (var i = 0; i < recipe.analyzedInstructions.length; i++) {
+        var ol = $("<ol>");
+        var instructions = recipe.analyzedInstructions[i].steps;
+
+        div.append("<h5>" + recipe.analyzedInstructions[i].name + "</h5>");
+        div.append(ol);
+
+        for (var j = 0; j < instructions.length; j++) {
+            ol.append("<li>" + instructions[j].step + "</li>");
+        }
+    }
+
+    // Display link to recipe
+    div.append("<p>Source: <a target=\"_blank\" href=\"" + recipe.sourceUrl + "\">" + recipe.sourceName + "</a></p>")
+}
+
 // DISPLAY A RANDOM RECIPE
 
 $("#random-recipe-btn").on("click", function() {
@@ -6,42 +43,10 @@ $("#random-recipe-btn").on("click", function() {
         console.log(response);
 
         var recipe = response.data.recipes[0];
-        var div = $("#recipe-display");
-
-        div.empty()
 
         console.log(recipe);
 
-        div.append("<h4>" + recipe.title + "</h4>");
-        div.append("<img src=\"" + recipe.image + "\">");
-
-        // Display ingredients
-        div.append("<h5> Ingredients </h5>");
-        var ul = $("<ul>");
-        var ingredients = recipe.extendedIngredients;
-
-        div.append(ul);
-
-        for (var i = 0; i < ingredients.length; i++) {
-            ul.append("<li>" + ingredients[i].original + "</li>");
-        }
-
-        // Display instructions
-        div.append("<h5> Instructions </h5>");
-        for (var i = 0; i < recipe.analyzedInstructions.length; i++) {
-            var ol = $("<ol>");
-            var instructions = recipe.analyzedInstructions[i].steps;
-
-            div.append("<h5>" + recipe.analyzedInstructions[i].name + "</h5>");
-            div.append(ol);
-
-            for (var j = 0; j < instructions.length; j++) {
-                ol.append("<li>" + instructions[j].step + "</li>");
-            }
-        }
-
-        // Display link to recipe
-        div.append("<p>Source: <a target=\"_blank\" href=\"" + recipe.sourceUrl + "\">" + recipe.sourceName + "</a></p>")
+        displayRecipe(recipe);
     })
 })
 
