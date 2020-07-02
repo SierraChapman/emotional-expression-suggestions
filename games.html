@@ -15,6 +15,7 @@
         <p>Dates</p>
         <input type = "text" placeholder = "From (yyyy-mm-dd)" id = "firstDate">
         <input type = "text" placeholder = "To (yyyy-mm-dd)" id = "secondDate">
+        <br>
         <select id="genre" name="genres">
                 <option value="Genre">Genre</option>
                 <option value="None">None</option>
@@ -22,10 +23,19 @@
                 <option value="Shooter">Shooter</option>
                 <option value="Adventure">Adventure</option>
                 <option value="RPG">RPG</option>
-              </select>
-        <input type = "text" placeholder = "To (yyyy-mm-dd)" id = "secondDate">
+        </select>
+        <select id="searchBy" name="searchBy">
+                <option value="Relevance">Relevance</option>
+                <option value="Alphabetically(A-Z)">Alphabetically(A-Z)</option>
+                <option value="Alphabetically(Z-A)">Alphabetically(Z-A)</option>
+                <option value="Release Date(new-old)">Release Date(new-old)</option>
+                <option value="Release Date(old-new)">Release Date(old-new)</option>
+                <option value="Rating">Rating</option>
+        </select>
+        <input type = "text" placeholder = "# of Results(max = 40)" id = "resultsNum">
         <button type="submit" id = "gameSearch"><i class="fa fa-search"></i></button>
     </form>
+    <div id = "results"></div>
     <script defer src="game-script.js"></script>
 </body>
 </html>
