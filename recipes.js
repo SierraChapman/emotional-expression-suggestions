@@ -66,8 +66,23 @@ $("#search-recipe-btn").on("click", function(event) {
 
         for (var i = 0; i < response.data.results.length; i++) {
             // Save recipe id that can be used to look up more details
-            ul.append($("<li class=\"recipe-preview\" data-id=\"" + response.data.results[i].id + "\">" + response.data.results[i].title + "</li>"));
+            ul.append($("<li class=\"recipe-preview-li\" data-id=\"" + response.data.results[i].id + "\">" + response.data.results[i].title + "</li>"));
         }
+
+        $("#recipe-search-input").val("");
+        $("#ingredient-search-input").val("");
+    })
+})
+
+// SHOW RECIPE DETAILS WHEN CLICKED ON RESULT
+$(document).on("click", ".recipe-preview-li", function() {
+    axios.get("https://api.spoonacular.com/recipes/" + $(this).attr("data-id") + "/information?apiKey=ac075615bb0947ea8541206866406e74")
+    .then((response) => {
+        console.log(response);
+
+        console.log(response.data);
+
+        displayRecipe(response.data);
     })
 })
 
