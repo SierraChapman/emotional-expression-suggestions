@@ -1,3 +1,40 @@
+function displayRecipe(recipe) {
+    var div = $("#recipe-display");
+
+    div.empty()
+
+    div.append("<h4>" + recipe.title + "</h4>");
+    div.append("<img src=\"" + recipe.image + "\">");
+
+    // Display ingredients
+    div.append("<h5> Ingredients </h5>");
+    var ul = $("<ul>");
+    var ingredients = recipe.extendedIngredients;
+
+    div.append(ul);
+
+    for (var i = 0; i < ingredients.length; i++) {
+        ul.append("<li>" + ingredients[i].original + "</li>");
+    }
+
+    // Display instructions
+    div.append("<h5> Instructions </h5>");
+    for (var i = 0; i < recipe.analyzedInstructions.length; i++) {
+        var ol = $("<ol>");
+        var instructions = recipe.analyzedInstructions[i].steps;
+
+        div.append("<h5>" + recipe.analyzedInstructions[i].name + "</h5>");
+        div.append(ol);
+
+        for (var j = 0; j < instructions.length; j++) {
+            ol.append("<li>" + instructions[j].step + "</li>");
+        }
+    }
+
+    // Display link to recipe
+    div.append("<p>Source: <a target=\"_blank\" href=\"" + recipe.sourceUrl + "\">" + recipe.sourceName + "</a></p>")
+}
+
 // DISPLAY A RANDOM RECIPE
 
 $("#random-recipe-btn").on("click", function() {
@@ -6,40 +43,46 @@ $("#random-recipe-btn").on("click", function() {
         console.log(response);
 
         var recipe = response.data.recipes[0];
-        var div = $("#random-recipe");
 
         console.log(recipe);
 
-        div.append("<h4>" + recipe.title + "</h4>");
-        div.append("<img src=\"" + recipe.image + "\">");
+        displayRecipe(recipe);
+    })
+})
 
-        // Display ingredients
-        div.append("<h5> Ingredients </h5>");
+// SEARCH FOR RECIPES BY SOME CRITERIA, DISPLAY RESULTS AS SHORT LIST
+
+$("#search-recipe-btn").on("click", function(event) {
+    event.preventDefault();
+
+    axios.get("https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=ac075615bb0947ea8541206866406e74&query=" + $("#recipe-search-input").val() + "&includeIngredients=" + $("#ingredient-search-input").val())
+    .then((response) => {
+        console.log(response);
+
+        $("#recipe-previews").empty()
+        $("#recipe-previews").append($("<h5>").text("Results"));
         var ul = $("<ul>");
-        var ingredients = recipe.extendedIngredients;
+        $("#recipe-previews").append(ul);
 
-        div.append(ul);
-
-        for (var i = 0; i < ingredients.length; i++) {
-            ul.append("<li>" + ingredients[i].original + "</li>");
+        for (var i = 0; i < response.data.results.length; i++) {
+            // Save recipe id that can be used to look up more details
+            ul.append($("<li class=\"recipe-preview-li\" data-id=\"" + response.data.results[i].id + "\">" + response.data.results[i].title + "</li>"));
         }
 
-        // Display instructions
-        div.append("<h5> Instructions </h5>");
-        for (var i = 0; i < recipe.analyzedInstructions.length; i++) {
-            var ol = $("<ol>");
-            var instructions = recipe.analyzedInstructions[i].steps;
+        $("#recipe-search-input").val("");
+        $("#ingredient-search-input").val("");
+    })
+})
 
-            div.append("<h5>" + recipe.analyzedInstructions[i].name + "</h5>");
-            div.append(ol);
+// SHOW RECIPE DETAILS WHEN CLICKED ON RESULT
+$(document).on("click", ".recipe-preview-li", function() {
+    axios.get("https://api.spoonacular.com/recipes/" + $(this).attr("data-id") + "/information?apiKey=ac075615bb0947ea8541206866406e74")
+    .then((response) => {
+        console.log(response);
 
-            for (var j = 0; j < instructions.length; j++) {
-                ol.append("<li>" + instructions[j].step + "</li>");
-            }
-        }
+        console.log(response.data);
 
-        // Display link to recipe
-        div.append("<p>Source: <a target=\"_blank\" href=\"" + recipe.sourceUrl + "\">" + recipe.sourceName + "</a></p>")
+        displayRecipe(response.data);
     })
 })
 
