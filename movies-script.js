@@ -1,7 +1,7 @@
 var buttons = false;
-var nextURL = "";
-var prevURL = "";
-var queryURL = "https://api.themoviedb.org/3/discover/movie?api_key=ed2eb23526f1f24fbea2ca4d8a1e10fc&language=en-US&include_adult=false&page=1";
+var nextPage = 2;
+var prevPage = 0;
+var queryURL = "https://api.themoviedb.org/3/discover/movie?api_key=ed2eb23526f1f24fbea2ca4d8a1e10fc&language=en-US&include_adult=false";
 var genres = {28: "Action", 12 : "Adventure", 35 : "Comedy", 80 : "Crime", 18 : "Drama", 14: "Fantasy", 16 : "Animation", 99: "Documentary", 27: "Horror", 9648 : "Mystery", 36 : "History", 10751 : "Family", 10749 : "Romance", 10402 : "Music", 10770 : "TV Movie", 10752 : "War", 53 : "Thriller", 37 : "Western", 878 : "Science Fiction"}
 function querySearch(){
     console.log(queryURL);
@@ -17,7 +17,9 @@ function querySearch(){
             movieTitle.text(response.results[i].title);
             var poster = $("<img>");
             poster.css("width", "200px");
-            poster.attr("src", "https://image.tmdb.org/t/p/w500"  +response.results[i].poster_path);
+            if (response.results[i].poster_path !== null){
+                poster.attr("src", "https://image.tmdb.org/t/p/w500"  + response.results[i].poster_path);
+            }
             var movieGenre = $("<ul>");
             if(response.results[i].genre_ids.length > 0){
                 movieGenre.text("Genres: ");
@@ -32,8 +34,6 @@ function querySearch(){
             div.append(movieTitle, poster, movieGenre, releaseDate);
             $("#results").append(div);
         }
-        nextURL = response.next
-        prevURL = response.previous
     });
 }
 
@@ -67,6 +67,16 @@ $("#movieSearch").on("click", function(event) {
         queryURL += "&sort_by=revenue.desc";
     }
     querySearch();
+    if (buttons === false){
+        var next = $("<button>");
+        next.text("Next Page");
+        next.attr("class", "nextPage");
+        var prev = $("<button>");
+        prev.text("Previous Page");
+        prev.attr("class", "prevPage");
+        $("#pages").append(prev, next);
+        buttons = true;
+    }
   });
 
 $("#movieTitleSearch").on("click", function(event){
@@ -84,4 +94,20 @@ $("#movieTitleSearch").on("click", function(event){
         plot.text(response.Plot);
         $("#results").append(title, poster, plot);
     });
+})
+
+$("#pages").on("click", "button.nextPage", function(event){
+    queryURL += "&page=" + nextPage;
+    window.scrollTo(0, 0);
+    querySearch();
+    nextPage = nextPage + 1
+    prevPage = prevPage + 1;
+})
+
+$("#pages").on("click", "button.prevPage", function(event){
+    queryURL += "&page=" + prevPage;
+    window.scrollTo(0, 0);
+    querySearch();
+    nextPage = nextPage - 1
+    prevPage = prevPage - 1;
 })
