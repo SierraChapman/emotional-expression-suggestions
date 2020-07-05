@@ -2,7 +2,7 @@ var buttons = false;
 var nextURL = "";
 var prevURL = "";
 var queryURL = "https://api.themoviedb.org/3/discover/movie?api_key=ed2eb23526f1f24fbea2ca4d8a1e10fc&language=en-US&include_adult=false&page=1";
-
+var genres = {28: "Action", 12 : "Adventure", 35 : "Comedy", 80 : "Crime", 18 : "Drama", 14: "Fantasy", 16 : "Animation", 99: "Documentary", 27: "Horror", 9648 : "Mystery", 36 : "History", 10751 : "Family", 10749 : "Romance", 10402 : "Music", 10770 : "TV Movie", 10752 : "War", 53 : "Thriller", 37 : "Western", 878 : "Science Fiction"}
 function querySearch(){
     console.log(queryURL);
     $.ajax({
@@ -13,34 +13,23 @@ function querySearch(){
         console.log(response);
         for(var i=0; i<response.results.length; i++){ 
             var div = $("<div>");
-            var gameTitle = $("<h2>");
-            gameTitle.text(response.results[i].name);
+            var movieTitle = $("<h2>");
+            movieTitle.text(response.results[i].title);
             var poster = $("<img>");
             poster.css("width", "200px");
-            poster.attr("src", response.results[i].background_image);
-            var gameGenre = $("<ul>");
-            if(response.results[i].genres.length > 0){
-                gameGenre.text("Genres: ");
-                for(var j=0; j<response.results[i].genres.length; j++){
+            poster.attr("src", "https://image.tmdb.org/t/p/w500"  +response.results[i].poster_path);
+            var movieGenre = $("<ul>");
+            if(response.results[i].genre_ids.length > 0){
+                movieGenre.text("Genres: ");
+                for(var j=0; j<response.results[i].genre_ids.length; j++){
                     var li = $("<li>");
-                    li.text(response.results[i].genres[j].name);
-                    gameGenre.append(li);
-                }
-            }
-            var gamePlatforms = $("<ul>");
-            if(response.results[i].platforms !== null){
-                gamePlatforms.text("Platforms: ");
-                for(var j=0; j<response.results[i].platforms.length; j++){
-                    var li = $("<li>");
-                    li.text(response.results[i].platforms[j].platform.name);
-                    gamePlatforms.append(li);
+                    li.text(genres[response.results[i].genre_ids[j]]);
+                    movieGenre.append(li);
                 }
             }
             var releaseDate = $("<p>");
-            var rating = $("<p>");
-            rating.text("Rating: " + response.results[i].rating);
-            releaseDate.text("Release Date: " + response.results[i].released);
-            div.append(gameTitle, poster, gameGenre, gamePlatforms, releaseDate, rating);
+            releaseDate.text("Release Date: " + response.results[i].release_date);
+            div.append(movieTitle, poster, movieGenre, releaseDate);
             $("#results").append(div);
         }
         nextURL = response.next
@@ -49,6 +38,7 @@ function querySearch(){
 }
 
 $("#movieSearch").on("click", function(event) {
+    $("#results").empty();
     event.preventDefault();
     var year = $("#year").val()
     var genre = $("#genre").attr("value");
