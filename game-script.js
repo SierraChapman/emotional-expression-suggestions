@@ -123,3 +123,97 @@ $("#pages").on("click", "button.prevPage", function(event){
     window.scrollTo(0, 0);
     queryCall();
 })
+
+$("#randomButton").on("click", function(event){
+    event.preventDefault();
+    var title = $("#title").val();
+    var genre = $("#genre").val()
+    var firstDate = $("#firstDate").val()
+    var secondDate = $("#secondDate").val()
+    var genre = $("#genre").val()
+    var resultsNum = $("#resultsNum").val();
+    var searchBy = $("#searchBy").val();
+    queryURL = "https://api.rawg.io/api/games?ordering=relevance";
+    if (genre !== "Genre"){
+        genre = genre.replace(" ", "-");
+        queryURL += "&genres=" + genre.toLowerCase();
+    }
+    if (title !== ""){
+        title = title.replace(" ", "+");
+        queryURL += "&search=" + title;         
+    }
+    if (firstDate !== "" && secondDate !== ""){
+        queryURL += "&dates=" + firstDate + "," + secondDate;
+    }
+    else if (firstDate !== ""){
+        queryURL += "&dates=" + firstDate + ",2020-07-01";
+    }
+    else if (secondDate !== ""){
+        queryURL += "&dates=1950-01-01," + secondDate;
+    }
+    else {
+        queryURL += "&dates=1950-01-01,2020-07-01";
+    }
+    if (resultsNum !== ""){
+        queryURL += "&page_size=" + resultsNum;
+    }
+    else {
+        resultsNum = 20;
+    }
+    if (searchBy == "Alphabetically(A-Z)"){
+        queryURL += "&ordering=name";
+    }
+    else if (searchBy == "Alphabetically(Z-A)"){
+        queryURL += "&ordering=-name";
+    }
+    else if (searchBy == "Release Date(new-old)"){
+        queryURL += "&ordering=-released";
+    }
+    else if (searchBy == "Release Date(old-new)"){
+        queryURL += "&ordering=released";
+    }
+    else if (searchBy == "Rating"){
+        queryURL += "&ordering=-rating";
+    }
+    console.log(queryURL);
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        $("#results").empty();
+        console.log(response);
+        var ran = Math.floor(Math.random() * response.results.length) + 1 
+        var div = $("<div>");
+        var gameTitle = $("<h2>");
+        gameTitle.text(response.results[ran].name);
+        var poster = $("<img>");
+        poster.css("width", "500px");
+        poster.attr("src", response.results[ran].background_image);
+        var gameGenre = $("<ul>");
+        if(response.results[ran].genres.length > 0){
+            gameGenre.text("Genres: ");
+            for(var j=0; j<response.results[ran].genres.length; j++){
+                var li = $("<li>");
+                li.text(response.results[ran].genres[j].name);
+                gameGenre.append(li);
+            }
+        }
+        var gamePlatforms = $("<ul>");
+        if(response.results[ran].platforms !== null){
+            gamePlatforms.text("Platforms: ");
+            for(var j=0; j<response.results[ran].platforms.length; j++){
+                var li = $("<li>");
+                li.text(response.results[ran].platforms[j].platform.name);
+                gamePlatforms.append(li);
+            }
+        }
+        var releaseDate = $("<p>");
+        var rating = $("<p>");
+        rating.text("Rating: " + response.results[ran].rating);
+        releaseDate.text("Release Date: " + response.results[ran].released);
+        div.append(gameTitle, poster, gameGenre, gamePlatforms, releaseDate, rating);
+        $("#results").append(div);
+        nextURL = response.next
+        prevURL = response.previous
+    });
+})
