@@ -48,8 +48,16 @@ $("#movieSearch").on("click", function(event) {
     if (genre !== "Genre"){
         queryURL += "&with_genres=" + genre;
     }
-    if(year !== ""){
+    if(year.length === ""){
+        queryURL = queryURL;
+    }
+    else if (year.length !== 4){
+        $("#error").text("Please enter a valid year");
+        return;
+    }
+    else if(year !== ""){
         queryURL += "&year=" + year;
+        $("#error").text("");
     }
     if (searchBy == "Alphabetically(A-Z)"){
         queryURL += "&sort_by=original_title.asc";
@@ -125,8 +133,15 @@ $("#randomButton").on("click", function(event) {
     if (genre !== "Genre"){
         queryURL += "&with_genres=" + genre;
     }
-    if(year !== ""){
+    if(year.length === ""){
+        queryURL = queryURL;
+    }
+    else if (year.length !== 4){
+        $("#error").text("Please enter a valid year");
+    }
+    else if(year !== ""){
         queryURL += "&year=" + year;
+        $("#error").text("");
     }
     if (searchBy == "Alphabetically(A-Z)"){
         queryURL += "&sort_by=original_title.asc";

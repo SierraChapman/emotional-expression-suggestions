@@ -27,6 +27,7 @@
         <p style=color:white>Dates</p>
         <input type = "text" placeholder = "From (yyyy-mm-dd)" id = "firstDate">
         <input type = "text" placeholder = "To (yyyy-mm-dd)" id = "secondDate">
+        <div id = "yearError" style = "color: red"></div>
         <br>
         <br>
         <select id="genre" name="genres">
@@ -61,6 +62,7 @@
                 <option value="Rating">Rating</option>
         </select>
         <input type = "text" placeholder = "# of Results(max = 40)" id = "resultsNum">
+        <div id = "error" style = "color: red"></div>
         <button type="submit" id = "gameSearch" class="pulse btn wow animated"><i class="fa fa-search"></i></button>
         <button id = "randomButton" class="pulse btn wow animated">Random</button>
     </form>
