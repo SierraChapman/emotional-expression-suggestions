@@ -48,7 +48,7 @@ $("#movieSearch").on("click", function(event) {
     if (genre !== "Genre"){
         queryURL += "&with_genres=" + genre;
     }
-    if(year.length === ""){
+    if(year === ""){
         queryURL = queryURL;
     }
     else if (year.length !== 4){
@@ -133,7 +133,7 @@ $("#randomButton").on("click", function(event) {
     if (genre !== "Genre"){
         queryURL += "&with_genres=" + genre;
     }
-    if(year.length === ""){
+    if(year === ""){
         queryURL = queryURL;
     }
     else if (year.length !== 4){
