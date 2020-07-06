@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="game.style.css">
     <header class="jumbotron">
@@ -59,9 +61,14 @@
                 <option value="Rating">Rating</option>
         </select>
         <input type = "text" placeholder = "# of Results(max = 40)" id = "resultsNum">
-        <button type="submit" id = "gameSearch"><i class="fa fa-search"></i></button>
-        <button id = "randomButton">Random</button>
+        <button type="submit" id = "gameSearch" class="pulse btn wow animated"><i class="fa fa-search"></i></button>
+        <button id = "randomButton" class="pulse btn wow animated">Random</button>
     </form>
+     <br><br>
+     
+       
+
+
     <div id = "results"></div>
     <div id = "pages"></div>
     <script defer src="game-script.js"></script>
