@@ -1,17 +1,16 @@
- .jumbotron {
-    text-align: center;
-    background-color: black;
-    border-radius: 0;
-    border-bottom: 10px solid black;
-  } 
-  
-  body {
-    background:black;
-  }
+.jumbotron {
+  text-align: center;
+  background-color: black;
+  border-radius: 0;
+  border-bottom: 10px solid black;
+} 
 
-  .card{
-    background:black
+body {
+  background:black;
+  color: white;
+}
 
-
-  }
+.card{
+  background:black
+}
  
