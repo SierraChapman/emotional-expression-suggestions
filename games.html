@@ -6,15 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="game.style.css">
+    <header class="jumbotron">
+        
+        <h1 style="font-size:80px"><span style="color:blue">G</span><span style="color:red">A</span></span><span style="color:yellowgreen">M</span><span style="color:orange">E</span><span style="color:lightskyblue">S</span></strong></h1>
+        <br>        
+        <h4 style= color:white>Find your games here <i class="fas fa-smile" style="color:yellow"></i></h4>
+        
+      </header>
+
+
 </head>
 <body>
-    <h1>Games</h1>
+    <h2 style=color:white>SEARCH BY:</h2>
     <form>
         <input type = "text" placeholder = "Title" id = "title">
-        <p>Dates</p>
+        <p style=color:white>Dates</p>
         <input type = "text" placeholder = "From (yyyy-mm-dd)" id = "firstDate">
         <input type = "text" placeholder = "To (yyyy-mm-dd)" id = "secondDate">
+        <br>
         <br>
         <select id="genre" name="genres">
                 <option value="Genre">Genre</option>
@@ -48,11 +61,21 @@
                 <option value="Rating">Rating</option>
         </select>
         <input type = "text" placeholder = "# of Results(max = 40)" id = "resultsNum">
-        <button type="submit" id = "gameSearch"><i class="fa fa-search"></i></button>
-        <button id = "randomButton">Random</button>
+        <button type="submit" id = "gameSearch" class="pulse btn wow animated"><i class="fa fa-search"></i></button>
+        <button id = "randomButton" class="pulse btn wow animated">Random</button>
     </form>
+     <br><br>
+     
+       
+
+
     <div id = "results"></div>
     <div id = "pages"></div>
     <script defer src="game-script.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    
 </body>
 </html>
