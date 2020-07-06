@@ -41,7 +41,7 @@ $("#random-recipe-btn").on("click", function() {
     axios.get('https://api.spoonacular.com/recipes/random?number=1&apiKey=ac075615bb0947ea8541206866406e74')
     .then((response) => {
         console.log(response);
-
+        
         var recipe = response.data.recipes[0];
 
         console.log(recipe);
