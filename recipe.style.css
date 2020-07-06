@@ -13,3 +13,7 @@ body {
 .card{
   background:black;
 }
+
+#error-message {
+  color: red;
+}
