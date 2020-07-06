@@ -1,3 +1,5 @@
+/* Styles for all pages */
+
 .jumbotron {
   text-align: center;
   background-color: black;
@@ -10,7 +12,18 @@ body {
   color: white;
 }
 
+/* Home page styles */
+
 .card{
   background:black
 }
- 
+
+/* Recipe page styles */
+
+#error-message {
+  color: red;
+}
+
+.recipe-preview-li {
+  cursor: pointer;
+}
