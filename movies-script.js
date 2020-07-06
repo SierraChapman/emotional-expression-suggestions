@@ -79,10 +79,10 @@ $("#movieSearch").on("click", function(event) {
         var next = $("<button>");
         $("#pageTag").text("Page " + (nextPage-1));
         next.text("Next Page");
-        next.attr("class", "nextPage");
+        next.attr("class", "btn nextPage");
         var prev = $("<button>");
         prev.text("Previous Page");
-        prev.attr("class", "prevPage");
+        prev.attr("class", "prevPage btn");
         $("#pages").append(prev, next);
         buttons = true;
     }

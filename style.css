@@ -27,3 +27,7 @@ body {
 .recipe-preview-li {
   cursor: pointer;
 }
+
+.prevPage {
+  margin-right: 4px;
+}
