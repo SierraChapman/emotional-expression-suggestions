@@ -41,7 +41,10 @@
     <p>OR</p>
 
     <button id="random-recipe-btn" class="pulse btn wow animated">Show me a random recipe</button>
-
+    <br>
+    <br>
+    <button href="index.html"class="pulse btn wow animated" id="back-button" onclick="goBack()">Back</button>
+   
     <div id="recipe-previews"></div>
 
     <div id="recipe-display"></div>
@@ -56,6 +59,13 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="recipes.js"></script>
+
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
+
 </body>
 
 </html>
