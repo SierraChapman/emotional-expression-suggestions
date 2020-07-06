@@ -48,8 +48,16 @@ $("#movieSearch").on("click", function(event) {
     if (genre !== "Genre"){
         queryURL += "&with_genres=" + genre;
     }
-    if(year !== ""){
+    if(year.length === ""){
+        queryURL = queryURL;
+    }
+    else if (year.length !== 4){
+        $("#error").text("Please enter a valid year");
+        return;
+    }
+    else if(year !== ""){
         queryURL += "&year=" + year;
+        $("#error").text("");
     }
     if (searchBy == "Alphabetically(A-Z)"){
         queryURL += "&sort_by=original_title.asc";
@@ -69,6 +77,7 @@ $("#movieSearch").on("click", function(event) {
     querySearch();
     if (buttons === false){
         var next = $("<button>");
+        $("#pageTag").text("Page " + (nextPage-1));
         next.text("Next Page");
         next.attr("class", "nextPage");
         var prev = $("<button>");
@@ -100,8 +109,9 @@ $("#pages").on("click", "button.nextPage", function(event){
     queryURL += "&page=" + nextPage;
     window.scrollTo(0, 0);
     querySearch();
-    nextPage = nextPage + 1
+    nextPage = nextPage + 1;
     prevPage = prevPage + 1;
+    $("#pageTag").text("Page " + (nextPage-1));
 })
 
 $("#pages").on("click", "button.prevPage", function(event){
@@ -110,6 +120,7 @@ $("#pages").on("click", "button.prevPage", function(event){
     querySearch();
     nextPage = nextPage - 1
     prevPage = prevPage - 1;
+    $("#pageTag").text("Page " + (nextPage-1));
 })
 
 $("#randomButton").on("click", function(event) {
@@ -122,8 +133,15 @@ $("#randomButton").on("click", function(event) {
     if (genre !== "Genre"){
         queryURL += "&with_genres=" + genre;
     }
-    if(year !== ""){
+    if(year.length === ""){
+        queryURL = queryURL;
+    }
+    else if (year.length !== 4){
+        $("#error").text("Please enter a valid year");
+    }
+    else if(year !== ""){
         queryURL += "&year=" + year;
+        $("#error").text("");
     }
     if (searchBy == "Alphabetically(A-Z)"){
         queryURL += "&sort_by=original_title.asc";
