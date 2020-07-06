@@ -13,6 +13,7 @@
     <h1>Movies</h1>
     <form>
         <input type = "text" placeholder = "Year" id = "year">
+        <div id = "error" style = "color: red"></div>
         <br>
         <select id="genre" name="genres">
                 <option value="Genre">Genre</option>
@@ -52,6 +53,7 @@
         <button type="submit" id = "movieTitleSearch"><i class="fa fa-search"></i></button>
     </form>
     <div id = "results"></div>
+    <p id = "pageTag"></p>
     <div id = "pages"></div>
     <script defer src="movies-script.js"></script>
 </body>
