@@ -65,7 +65,7 @@
         <button id = "randomButton" class="pulse btn wow animated">Random</button>
     </form>
      <br><br>
-     
+     <button href="index.html"class="pulse btn wow animated" id="back-button" onclick="goBack()">Back</button>
        
 
 
@@ -76,6 +76,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
 </body>
 </html>
