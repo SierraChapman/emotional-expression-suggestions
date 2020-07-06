@@ -1,6 +1,7 @@
 var buttons = false;
 var nextURL = "";
 var prevURL = "";
+var curPage = 1;
 var queryURL = "https://api.rawg.io/api/games?ordering=relevance";
 
 function queryCall(){
@@ -49,6 +50,7 @@ function queryCall(){
 }
 $("#gameSearch").on("click", function(event){
     event.preventDefault();
+    $("#pageTag").text("Page " + curPage);
     var title = $("#title").val();
     var genre = $("#genre").val()
     var firstDate = $("#firstDate").val()
@@ -113,12 +115,16 @@ $("#gameSearch").on("click", function(event){
 })
 
 $("#pages").on("click", "button.nextPage", function(event){
+    curPage += 1;
     queryURL = nextURL;
+    $("#pageTag").text("Page " + curPage);
     window.scrollTo(0, 0);
     queryCall();
 })
 
 $("#pages").on("click", "button.prevPage", function(event){
+    curPage -= 1;
+    $("#pageTag").text("Page " + curPage);
     queryURL = prevURL;
     window.scrollTo(0, 0);
     queryCall();

@@ -69,6 +69,7 @@ $("#movieSearch").on("click", function(event) {
     querySearch();
     if (buttons === false){
         var next = $("<button>");
+        $("#pageTag").text("Page " + (nextPage-1));
         next.text("Next Page");
         next.attr("class", "nextPage");
         var prev = $("<button>");
@@ -100,8 +101,9 @@ $("#pages").on("click", "button.nextPage", function(event){
     queryURL += "&page=" + nextPage;
     window.scrollTo(0, 0);
     querySearch();
-    nextPage = nextPage + 1
+    nextPage = nextPage + 1;
     prevPage = prevPage + 1;
+    $("#pageTag").text("Page " + (nextPage-1));
 })
 
 $("#pages").on("click", "button.prevPage", function(event){
@@ -110,6 +112,7 @@ $("#pages").on("click", "button.prevPage", function(event){
     querySearch();
     nextPage = nextPage - 1
     prevPage = prevPage - 1;
+    $("#pageTag").text("Page " + (nextPage-1));
 })
 
 $("#randomButton").on("click", function(event) {
