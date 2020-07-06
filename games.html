@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="game.style.css">
@@ -36,6 +36,21 @@
                 <option value="Shooter">Shooter</option>
                 <option value="Adventure">Adventure</option>
                 <option value="RPG">RPG</option>
+                <option value="Indie">Indie</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Strategy">Strategy</option>
+                <option value="Casual">Casual</option>
+                <option value="Simulation">Simulation</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="Arcade">Arcade</option>
+                <option value="Platformer">Platformer</option>
+                <option value="Racing">Racing</option>
+                <option value="Massively Multiplayer">Massively Multiplayer</option>
+                <option value="Family">Family</option>
+                <option value="Fighting">Fighting</option>
+                <option value="Board Games">Board Games</option>
+                <option value="Educational">Educational</option>
+                <option value="Card">Card</option>
         </select>
         <select id="searchBy" name="searchBy">
                 <option value="Relevance">Relevance</option>
@@ -46,7 +61,8 @@
                 <option value="Rating">Rating</option>
         </select>
         <input type = "text" placeholder = "# of Results(max = 40)" id = "resultsNum">
-        <button class="pulse btn wow animated" type="submit" id = "gameSearch">Enter</button> 
+        <button type="submit" id = "gameSearch" class="pulse btn wow animated"><i class="fa fa-search"></i></button>
+        <button id = "randomButton" class="pulse btn wow animated">Random</button>
     </form>
      <br><br>
      
@@ -54,6 +70,7 @@
 
 
     <div id = "results"></div>
+    <div id = "pages"></div>
     <script defer src="game-script.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>

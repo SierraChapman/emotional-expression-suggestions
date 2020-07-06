@@ -1,27 +1,15 @@
+.jumbotron {
+  text-align: center;
+  background-color: black;
+  border-radius: 0;
+  border-bottom: 10px solid black;
+} 
 
- .jumbotron {
-    text-align: center;
-    background-color: black;
-    border-radius: 0;
-    border-bottom: 10px solid black;
-  } 
-  
-  body {
-    background:black;
-  }
+body {
+  background:black;
+  color: white;
+}
 
-  .card{
-    background:black;
-
-
-  }
- h5{ color:white;
-     
- }
-
- h4{ color:white;
-
- }
- li{color:white;
-
- }
+.card{
+  background:black;
+}
