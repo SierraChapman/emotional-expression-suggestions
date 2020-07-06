@@ -1,6 +1,7 @@
 var buttons = false;
 var nextURL = "";
 var prevURL = "";
+var curPage = 1;
 var queryURL = "https://api.rawg.io/api/games?ordering=relevance";
 
 function queryCall(){
@@ -49,6 +50,7 @@ function queryCall(){
 }
 $("#gameSearch").on("click", function(event){
     event.preventDefault();
+    $("#pageTag").text("Page " + curPage);
     var title = $("#title").val();
     var genre = $("#genre").val()
     var firstDate = $("#firstDate").val()
@@ -65,23 +67,45 @@ $("#gameSearch").on("click", function(event){
         title = title.replace(" ", "+");
         queryURL += "&search=" + title;         
     }
-    if (firstDate !== "" && secondDate !== ""){
+    if (firstDate === "" && secondDate === ""){
+        queryURL += "&dates=1950-01-01,2020-07-01";
+        $("#error").text("");
+    }
+    else if (firstDate.length !== 10 || secondDate.length !== 10){
+        $("#error").text("Please enter a valid year of the format yyyy-mm-dd");
+        return;
+    }
+    else if (firstDate !== "" && secondDate !== ""){
         queryURL += "&dates=" + firstDate + "," + secondDate;
+        $("#error").text("");
     }
     else if (firstDate !== ""){
         queryURL += "&dates=" + firstDate + ",2020-07-01";
+        $("#error").text("");
     }
     else if (secondDate !== ""){
         queryURL += "&dates=1950-01-01," + secondDate;
+        $("#error").text("");
     }
     else {
         queryURL += "&dates=1950-01-01,2020-07-01";
+        $("#error").text("");
     }
-    if (resultsNum !== ""){
+    if (resultsNum === ""){
+        resultsNum = 20;
+        $("#error").text("");
+    }
+    else if (resultsNum > 40 || resultsNum <= 0){
+        $("#error").text("Please enter a valid results number from 1-40");
+        return;
+    }
+    else if (resultsNum !== ""){
         queryURL += "&page_size=" + resultsNum;
+        $("#error").text("");
     }
     else {
         resultsNum = 20;
+        $("#error").text("");
     }
     if (searchBy == "Alphabetically(A-Z)"){
         queryURL += "&ordering=name";
@@ -113,12 +137,16 @@ $("#gameSearch").on("click", function(event){
 })
 
 $("#pages").on("click", "button.nextPage", function(event){
+    curPage += 1;
     queryURL = nextURL;
+    $("#pageTag").text("Page " + curPage);
     window.scrollTo(0, 0);
     queryCall();
 })
 
 $("#pages").on("click", "button.prevPage", function(event){
+    curPage -= 1;
+    $("#pageTag").text("Page " + curPage);
     queryURL = prevURL;
     window.scrollTo(0, 0);
     queryCall();
@@ -142,23 +170,45 @@ $("#randomButton").on("click", function(event){
         title = title.replace(" ", "+");
         queryURL += "&search=" + title;         
     }
-    if (firstDate !== "" && secondDate !== ""){
+    if (firstDate === "" && secondDate === ""){
+        queryURL += "&dates=1950-01-01,2020-07-01";
+        $("#error").text("");
+    }
+    else if (firstDate.length !== 10 || secondDate.length !== 10){
+        $("#error").text("Please enter a valid year of the format yyyy-mm-dd");
+        return;
+    }
+    else if (firstDate !== "" && secondDate !== ""){
         queryURL += "&dates=" + firstDate + "," + secondDate;
+        $("#error").text("");
     }
     else if (firstDate !== ""){
         queryURL += "&dates=" + firstDate + ",2020-07-01";
+        $("#error").text("");
     }
     else if (secondDate !== ""){
         queryURL += "&dates=1950-01-01," + secondDate;
+        $("#error").text("");
     }
     else {
         queryURL += "&dates=1950-01-01,2020-07-01";
+        $("#error").text("");
     }
-    if (resultsNum !== ""){
+    if (resuiltsNum === ""){
+        resultsNum = 20;
+        $("#error").text("");
+    }
+    else if (resultsNum > 40 || resultsNum <= 0){
+        $("#error").text("Please enter a valid results number from 1-40");
+        return;
+    }
+    else if (resultsNum !== ""){
         queryURL += "&page_size=" + resultsNum;
+        $("#error").text("");
     }
     else {
         resultsNum = 20;
+        $("#error").text("");
     }
     if (searchBy == "Alphabetically(A-Z)"){
         queryURL += "&ordering=name";
