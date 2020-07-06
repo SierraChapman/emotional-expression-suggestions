@@ -11,50 +11,51 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="recipe.style.css">
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <header class="jumbotron">
-        <h1 class="display-4" style= color:teal>L.I.F.E.</h1>
-        <h4 style= color:teal>Living Inside For Ever</h4>
+        <h1 class="display-4"> <span style="color:blue">L.</span><span style="color:red">I.</span></span><span style="color:yellowgreen">F.</span><span style="color:orange">E.</span></h1>
+        <h4><span style= "color:blue">L</span><span style="color:white">iving</span> <span style="color:red">I</span><span style="color:white">nside </span><span style="color:white"></span><span style= "color:yellowgreen">F</span><span style="color:white">or <span style="color:orange">E</span><span style="color:white">ver</h4>
         <br>
-        <h5 style= color:teal>Sometimes you just need options</h5>
+        <h5 style= color:white>Sometimes you just need options other than cereal <i class="fas fa-grin-wink" style="color:yellow"></i></h5>
         
       </header>
 </head>
 <body>
+
     <div class="container">
 
-        <form>
-            <div class="form-group">
-                <label for="recipe-search-input">Have an idea of what you want to make? Search here:</label>
-                <input type="text" class="form-control" id="recipe-search-input" placeholder="search">
-            </div>
-            <div class="form-group">
-                <label for="ingredient-search-input">Have some ingredients you want to use? List them here:</label>
-                <input type="text" class="form-control" id="ingredient-search-input" placeholder="ingredient 1, ingredient 2">
-            </div>
-            <button type="submit" id="search-recipe-btn" class="btn btn-primary mb-2">Search</button>
-        </form>
+    <form>
+        <div class="form-group">
+            <label for="recipe-search-input">Have an idea of what you want to make? Search here:</label>
+            <input type="text" class="form-control" id="recipe-search-input" placeholder="search">
+        </div>
+        <div class="form-group">
+            <label for="ingredient-search-input">Have some ingredients you want to use? List them here:</label>
+            <input type="text" class="form-control" id="ingredient-search-input" placeholder="ingredient 1, ingredient 2">
+        </div>
+        <button type="submit" id="search-recipe-btn" class="pulse btn wow animated">Search</button>
+    </form>
 
-        <p>OR</p>
+    <p>OR</p>
 
-        <button id="random-recipe-btn" class="btn btn-primary my-2">Show me a random recipe</button>
+    <button id="random-recipe-btn" class="pulse btn wow animated">Show me a random recipe</button>
 
-        <div id="recipe-previews"></div>
+    <div id="recipe-previews"></div>
 
-        <div id="recipe-display"></div>
-    </div>
+    <div id="recipe-display"></div>
+
 
     <!--Import jQuery before materialize.js-->
     <script defer src="script.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="recipes.js"></script>
