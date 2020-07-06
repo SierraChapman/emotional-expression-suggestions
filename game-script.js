@@ -195,7 +195,7 @@ $("#randomButton").on("click", function(event){
         queryURL += "&dates=1950-01-01,2020-07-01";
         $("#error").text("");
     }
-    if (resuiltsNum === ""){
+    if (resultsNum === ""){
         resultsNum = 20;
         $("#error").text("");
     }
