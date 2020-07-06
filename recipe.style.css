@@ -17,3 +17,7 @@ body {
 #error-message {
   color: red;
 }
+
+.recipe-preview-li {
+  cursor: pointer;
+}

@@ -61,11 +61,12 @@ $("#search-recipe-btn").on("click", function(event) {
     .then((response) => {
         console.log(response);
 
-        $("#recipe-previews").empty();
-        $("#error-message").empty();
-
         // If some results were found, show them on the page
         if (response.data.results.length > 0) {
+            $("#recipe-previews").empty();
+            $("#recipe-display").empty();
+            $("#error-message").empty();
+
             $("#recipe-previews").append($("<h5>").text("Results"));
             var ul = $("<ul>");
             $("#recipe-previews").append(ul);
@@ -74,13 +75,13 @@ $("#search-recipe-btn").on("click", function(event) {
                 // Save recipe id that can be used to look up more details
                 ul.append($("<li class=\"recipe-preview-li\" data-id=\"" + response.data.results[i].id + "\">" + response.data.results[i].title + "</li>"));
             }
+
+            $("#recipe-search-input").val("");
+            $("#ingredient-search-input").val("");
         } else {
             // Display a message saying if there are no results
-            $("#error-message").text("No results matched the search criteria.")
+            $("#error-message").text("No results found matching the search criteria.")
         }
-
-        $("#recipe-search-input").val("");
-        $("#ingredient-search-input").val("");
     })
 })
 
