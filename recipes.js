@@ -46,6 +46,8 @@ $("#random-recipe-btn").on("click", function() {
 
         console.log(recipe);
 
+        $("#recipe-previews").empty();
+        $("#error-message").empty();
         displayRecipe(recipe);
     })
 })
@@ -55,22 +57,31 @@ $("#random-recipe-btn").on("click", function() {
 $("#search-recipe-btn").on("click", function(event) {
     event.preventDefault();
 
-    axios.get("https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=ac075615bb0947ea8541206866406e74&query=" + $("#recipe-search-input").val() + "&includeIngredients=" + $("#ingredient-search-input").val())
+    axios.get("https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=ac075615bb0947ea8541206866406e74&sort=popularity&query=" + $("#recipe-search-input").val() + "&includeIngredients=" + $("#ingredient-search-input").val())
     .then((response) => {
         console.log(response);
 
-        $("#recipe-previews").empty()
-        $("#recipe-previews").append($("<h5>").text("Results"));
-        var ul = $("<ul>");
-        $("#recipe-previews").append(ul);
+        // If some results were found, show them on the page
+        if (response.data.results.length > 0) {
+            $("#recipe-previews").empty();
+            $("#recipe-display").empty();
+            $("#error-message").empty();
 
-        for (var i = 0; i < response.data.results.length; i++) {
-            // Save recipe id that can be used to look up more details
-            ul.append($("<li class=\"recipe-preview-li\" data-id=\"" + response.data.results[i].id + "\">" + response.data.results[i].title + "</li>"));
+            $("#recipe-previews").append($("<h5>").text("Results"));
+            var ul = $("<ul>");
+            $("#recipe-previews").append(ul);
+
+            for (var i = 0; i < response.data.results.length; i++) {
+                // Save recipe id that can be used to look up more details
+                ul.append($("<li class=\"recipe-preview-li\" data-id=\"" + response.data.results[i].id + "\">" + response.data.results[i].title + "</li>"));
+            }
+
+            $("#recipe-search-input").val("");
+            $("#ingredient-search-input").val("");
+        } else {
+            // Display a message saying if there are no results
+            $("#error-message").text("No results found matching the search criteria.")
         }
-
-        $("#recipe-search-input").val("");
-        $("#ingredient-search-input").val("");
     })
 })
 

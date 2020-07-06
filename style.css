@@ -1,17 +1,29 @@
- .jumbotron {
-    text-align: center;
-    background-color: black;
-    border-radius: 0;
-    border-bottom: 10px solid black;
-  } 
-  
-  body {
-    background:black;
-  }
+/* Styles for all pages */
 
-  .card{
-    background:black
+.jumbotron {
+  text-align: center;
+  background-color: black;
+  border-radius: 0;
+  border-bottom: 10px solid black;
+} 
 
+body {
+  background:black;
+  color: white;
+}
 
-  }
- 
+/* Home page styles */
+
+.card{
+  background:black
+}
+
+/* Recipe page styles */
+
+#error-message {
+  color: red;
+}
+
+.recipe-preview-li {
+  cursor: pointer;
+}

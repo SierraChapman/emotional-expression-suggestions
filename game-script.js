@@ -150,7 +150,8 @@ $("#pages").on("click", "button.prevPage", function(event){
     queryURL = prevURL;
     window.scrollTo(0, 0);
     queryCall();
-})
+});
+
 
 $("#randomButton").on("click", function(event){
     event.preventDefault();
