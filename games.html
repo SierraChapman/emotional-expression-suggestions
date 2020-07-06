@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+    <title>L.I.F.E. - Games</title>
+
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="game.style.css">
-    <header class="jumbotron">
-        
-        <h1 style="font-size:80px"><span style="color:blue">G</span><span style="color:red">A</span></span><span style="color:yellowgreen">M</span><span style="color:orange">E</span><span style="color:lightskyblue">S</span></strong></h1>
-        <br>        
-        <h4 style= color:white>Find your games here <i class="fas fa-smile" style="color:yellow"></i></h4>
-        
-      </header>
-
-
 </head>
 <body>
+    <header class="jumbotron">
+        <h1 style="font-size:80px"><span style="color:blue">G</span><span style="color:red">A</span><span style="color:yellowgreen">M</span><span style="color:orange">E</span><span style="color:lightskyblue">S</span></h1>
+        <br>        
+        <h4>Find your games here <i class="fas fa-smile" style="color:yellow"></i></h4>
+    </header>
+
     <h2 style=color:white>SEARCH BY:</h2>
     <form>
         <input type = "text" placeholder = "Title" id = "title">
@@ -31,58 +30,58 @@
         <br>
         <br>
         <select id="genre" name="genres">
-                <option value="Genre">Genre</option>
-                <option value="None">None</option>
-                <option value="Action">Action</option>
-                <option value="Shooter">Shooter</option>
-                <option value="Adventure">Adventure</option>
-                <option value="RPG">RPG</option>
-                <option value="Indie">Indie</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Strategy">Strategy</option>
-                <option value="Casual">Casual</option>
-                <option value="Simulation">Simulation</option>
-                <option value="Puzzle">Puzzle</option>
-                <option value="Arcade">Arcade</option>
-                <option value="Platformer">Platformer</option>
-                <option value="Racing">Racing</option>
-                <option value="Massively Multiplayer">Massively Multiplayer</option>
-                <option value="Family">Family</option>
-                <option value="Fighting">Fighting</option>
-                <option value="Board Games">Board Games</option>
-                <option value="Educational">Educational</option>
-                <option value="Card">Card</option>
+            <option value="Genre">Genre</option>
+            <option value="None">None</option>
+            <option value="Action">Action</option>
+            <option value="Shooter">Shooter</option>
+            <option value="Adventure">Adventure</option>
+            <option value="RPG">RPG</option>
+            <option value="Indie">Indie</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Strategy">Strategy</option>
+            <option value="Casual">Casual</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Puzzle">Puzzle</option>
+            <option value="Arcade">Arcade</option>
+            <option value="Platformer">Platformer</option>
+            <option value="Racing">Racing</option>
+            <option value="Massively Multiplayer">Massively Multiplayer</option>
+            <option value="Family">Family</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Board Games">Board Games</option>
+            <option value="Educational">Educational</option>
+            <option value="Card">Card</option>
         </select>
         <select id="searchBy" name="searchBy">
-                <option value="Relevance">Relevance</option>
-                <option value="Alphabetically(A-Z)">Alphabetically(A-Z)</option>
-                <option value="Alphabetically(Z-A)">Alphabetically(Z-A)</option>
-                <option value="Release Date(new-old)">Release Date(new-old)</option>
-                <option value="Release Date(old-new)">Release Date(old-new)</option>
-                <option value="Rating">Rating</option>
+            <option value="Relevance">Relevance</option>
+            <option value="Alphabetically(A-Z)">Alphabetically(A-Z)</option>
+            <option value="Alphabetically(Z-A)">Alphabetically(Z-A)</option>
+            <option value="Release Date(new-old)">Release Date(new-old)</option>
+            <option value="Release Date(old-new)">Release Date(old-new)</option>
+            <option value="Rating">Rating</option>
         </select>
         <input type = "text" placeholder = "# of Results(max = 40)" id = "resultsNum">
         <div id = "error" style = "color: red"></div>
         <button type="submit" id = "gameSearch" class="pulse btn wow animated"><i class="fa fa-search"></i></button>
         <button id = "randomButton" class="pulse btn wow animated">Random</button>
     </form>
-     <br><br>
-     <button href="index.html"class="pulse btn wow animated" id="back-button" onclick="goBack()">Back</button>
+    <br><br>
+    <button class="pulse btn wow animated" id="back-button" onclick="goBack()">Back</button>
        
-
-
     <div id = "results"></div>
     <p id = "pageTag"></p>
     <div id = "pages"></div>
-    <script defer src="game-script.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="game-script.js"></script>
+
     <script>
         function goBack() {
-          window.history.back();
+            window.history.back();
         }
-        </script>
+    </script>
 </body>
 </html>
