@@ -64,13 +64,17 @@
         <button type="submit" id = "gameSearch" class="pulse btn wow animated"><i class="fa fa-search"></i></button>
         <button id = "randomButton" class="pulse btn wow animated">Random</button>
     </form>
-     <br><br>
-     <button href="index.html"class="pulse btn wow animated" id="back-button" onclick="goBack()">Back</button>
+   
        
 
 
     <div id = "results"></div>
     <div id = "pages"></div>
+
+      <br><br>
+      
+     <button href="index.html"class="pulse btn wow animated" id="back-button" onclick="goBack()">Back</button>
+      
     <script defer src="game-script.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
@@ -79,7 +83,9 @@
     <script>
         function goBack() {
           window.history.back();
-        }
+
+	
+};
         </script>
 </body>
 </html>
