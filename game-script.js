@@ -127,10 +127,10 @@ $("#gameSearch").on("click", function(event){
     if (buttons === false){
         var next = $("<button>");
         next.text("Next Page");
-        next.attr("class", "nextPage");
+        next.attr("class", "nextPage btn");
         var prev = $("<button>");
         prev.text("Previous Page");
-        prev.attr("class", "prevPage");
+        prev.attr("class", "prevPage btn");
         $("#pages").append(prev, next);
         buttons = true;
     }
