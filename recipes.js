@@ -57,7 +57,7 @@ $("#random-recipe-btn").on("click", function() {
 $("#search-recipe-btn").on("click", function(event) {
     event.preventDefault();
 
-    axios.get("https://api.spoonacular.com/recipes/complexSearch?number=5&apiKey=ac075615bb0947ea8541206866406e74&sort=popularity&query=" + $("#recipe-search-input").val() + "&includeIngredients=" + $("#ingredient-search-input").val())
+    axios.get("https://api.spoonacular.com/recipes/complexSearch?number=10&apiKey=ac075615bb0947ea8541206866406e74&sort=popularity&query=" + $("#recipe-search-input").val() + "&includeIngredients=" + $("#ingredient-search-input").val())
     .then((response) => {
         console.log(response);
 
