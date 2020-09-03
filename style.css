@@ -12,6 +12,23 @@ body {
   color: white;
 }
 
+a {
+  color: #1472ff;
+}
+
+a:hover, a:active, a:focus {
+  color: #0056d6;
+}
+
+.btn {
+  background-color: #004bbd;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+  background-color: #0066ff;
+  color: #ffffff;
+}
+
 /* Home page styles */
 
 .card{
