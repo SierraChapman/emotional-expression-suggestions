@@ -31,6 +31,10 @@ a:hover, a:active, a:focus {
   color: #ffffff;
 }
 
+.brand {
+  font-family: 'Special Elite', cursive;
+}
+
 /* Home page styles */
 
 .card{
