@@ -2,13 +2,15 @@
 
 .jumbotron {
   text-align: center;
-  background-color: black;
+  background-color: #101010;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 1px solid #ffffff;
+  margin: 0 30px;
 } 
 
 body {
-  background:black;
+  /* background:#000022; */
+  background-color: #101010;
   color: white;
 }
 
@@ -32,7 +34,7 @@ a:hover, a:active, a:focus {
 /* Home page styles */
 
 .card{
-  background:black
+  background: #101010;
 }
 
 /* Recipe page styles */
