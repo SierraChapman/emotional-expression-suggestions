@@ -35,6 +35,36 @@ a:hover, a:active, a:focus {
   font-family: 'Special Elite', cursive;
 }
 
+/* Color sequence for different letter colors */
+
+.c0 {
+  color: #4141d3;
+}
+
+.c1 {
+  color: #eb2c2c;
+}
+
+.c2 {
+  color: #7eb117;
+}
+
+.c3 {
+  color: #e99f15;
+}
+
+.c4 {
+  color: #1f9aca;
+}
+
+.c5 {
+  color: #c936c9;
+}
+
+.c6 {
+  color: #e7e712;
+}
+
 /* Home page styles */
 
 .card{
