@@ -49,6 +49,7 @@ h4.brand {
 header h5 {
   padding-top: 8px;
   margin-bottom: 20px;
+  font-weight: 300;
 }
 
 /* Color sequence for different letter colors */
