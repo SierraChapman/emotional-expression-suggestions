@@ -37,6 +37,20 @@ a:hover, a:active, a:focus {
   font-family: 'Special Elite', cursive;
 }
 
+h1.brand {
+  margin-bottom: 12px !important;
+}
+
+h4.brand {
+  margin-top: 0 !important;
+  margin-bottom: 26px !important;
+}
+
+header h5 {
+  padding-top: 8px;
+  margin-bottom: 20px;
+}
+
 /* Color sequence for different letter colors */
 
 .c0 {
