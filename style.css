@@ -73,6 +73,14 @@ a:hover, a:active, a:focus {
   background: #101010;
 }
 
+.carousel-item {
+  width: 350px !important;
+}
+
+.carousel {
+  margin-bottom: -60px;
+}
+
 /* Recipe page styles */
 
 #error-message {
